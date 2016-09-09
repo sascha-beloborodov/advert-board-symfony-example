@@ -1,0 +1,3 @@
+arm_sacrifice_homepage:
+    path:     /
+    defaults: { _controller: ArmSacrificeBundle:Default:index }

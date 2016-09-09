@@ -1,0 +1,4 @@
+services:
+#    arm_sacrifice.example:
+#        class: ArmSacrificeBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
