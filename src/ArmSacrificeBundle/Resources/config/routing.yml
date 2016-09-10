@@ -1,3 +1,7 @@
+arm_sacrifice_app_job:
+    resource: "@ArmSacrificeBundle/Resources/config/routing/job.yml"
+    prefix:   /app_job
+
 arm_sacrifice_homepage:
     path:     /
     defaults: { _controller: ArmSacrificeBundle:Default:index }

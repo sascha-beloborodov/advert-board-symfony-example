@@ -1,0 +1,24 @@
+app_job_index:
+    path:     /
+    defaults: { _controller: "ArmSacrificeBundle:Job:index" }
+    methods:  GET
+
+app_job_show:
+    path:     /{id}/show
+    defaults: { _controller: "ArmSacrificeBundle:Job:show" }
+    methods:  GET
+
+app_job_new:
+    path:     /new
+    defaults: { _controller: "ArmSacrificeBundle:Job:new" }
+    methods:  [GET, POST]
+
+app_job_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ArmSacrificeBundle:Job:edit" }
+    methods:  [GET, POST]
+
+app_job_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ArmSacrificeBundle:Job:delete" }
+    methods:  DELETE

@@ -492,6 +492,7 @@ class Job
     public function setCreatedAtValue()
     {
         // Add your code here
+        $this->created_at = new \DateTime();
     }
 
     /**
@@ -500,6 +501,7 @@ class Job
     public function setUpdatedAtValue()
     {
         // Add your code here
+
     }
 }
 

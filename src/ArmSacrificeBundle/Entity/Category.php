@@ -137,5 +137,29 @@ class Category
     {
         return $this->affiliates;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        if(!$this->getCreatedAt())
+        {
+            $this->created_at = new \DateTime();
+        }
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return $this->getName() ? $this->getName() : '';
+    }
 }
 

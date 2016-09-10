@@ -23,6 +23,7 @@ class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
         $jobFullTime->setIsActivated(true);
         $jobFullTime->setToken('job_example_com');
         $jobFullTime->setEmail('resume@example.com');
+        $jobFullTime->setCreatedAt(new DateTime());
         $jobFullTime->setExpiresAt(new \DateTime('+30 days'));
 
         $jobPartTime = new Job();
@@ -39,6 +40,7 @@ class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
         $jobPartTime->setIsActivated(true);
         $jobPartTime->setToken('designer_resume@example.com');
         $jobPartTime->setEmail('resume@example.com');
+        $jobFullTime->setCreatedAt(new DateTime());
         $jobPartTime->setExpiresAt(new \DateTime('+30 days'));
         $em->persist($jobFullTime);
         $em->persist($jobPartTime);
