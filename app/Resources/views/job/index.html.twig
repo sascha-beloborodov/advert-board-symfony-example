@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/armsacrifice/css/jobs.css') }}" type="text/css" media="all">
+{% endblock %}
+
 {% block body %}
     <h1>Job list</h1>
 

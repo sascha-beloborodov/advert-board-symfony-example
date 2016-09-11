@@ -2,6 +2,8 @@
 
 namespace ArmSacrificeBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Job
  */
@@ -486,13 +488,16 @@ class Job
     {
         return $this->category;
     }
+
     /**
      * @ORM\PrePersist
      */
     public function setCreatedAtValue()
     {
-        // Add your code here
-        $this->created_at = new \DateTime();
+        if(!$this->getCreatedAt())
+        {
+            $this->created_at = new \DateTime();
+        }
     }
 
     /**
@@ -500,8 +505,7 @@ class Job
      */
     public function setUpdatedAtValue()
     {
-        // Add your code here
-
+        $this->updated_at = new \DateTime();
     }
 }
 

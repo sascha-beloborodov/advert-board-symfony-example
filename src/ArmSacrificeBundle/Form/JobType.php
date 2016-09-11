@@ -3,6 +3,7 @@
 namespace ArmSacrificeBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,9 +28,9 @@ class JobType extends AbstractType
             ->add('is_public')
             ->add('is_activated')
             ->add('email')
-            ->add('expires_at', 'datetime')
-            ->add('created_at', 'datetime')
-            ->add('updated_at', 'datetime')
+            ->add('expires_at', DateTimeType::class)
+            ->add('created_at', DateTimeType::class)
+            ->add('updated_at', DateTimeType::class)
             ->add('category')
         ;
     }
