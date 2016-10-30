@@ -4,4 +4,4 @@ arm_sacrifice_app_job:
 
 arm_sacrifice_homepage:
     path:     /
-    defaults: { _controller: ArmSacrificeBundle:Default:index }
+    defaults: { _controller: ArmSacrificeBundle:Job:index }

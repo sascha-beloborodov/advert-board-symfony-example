@@ -222,4 +222,3 @@ class Affiliate
         $this->created_at = new \DateTime();
     }
 }
-

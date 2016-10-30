@@ -2,15 +2,18 @@
 
 namespace ArmSacrificeBundle\Controller;
 
+use ArmSacrificeBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use ArmSacrificeBundle\Entity\Job;
 use ArmSacrificeBundle\Form\JobType;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Job controller.
  *
+ * @property $container
  */
 class JobController extends Controller
 {
@@ -22,10 +25,21 @@ class JobController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $jobs = $em->getRepository('ArmSacrificeBundle:Job')->findAll();
+//        $jobs = $em->getRepository('ArmSacrificeBundle:Job')->getActiveJobs();
+//        $jobs = $em->getRepository('ArmSacrificeBundle:Job')->findAll();
+        $categories = $em->getRepository('ArmSacrificeBundle:Category')->getWithJobs();
+
+        foreach($categories as $category) {
+            /** @var $category Category */
+            $category->setActiveJobs($em->getRepository('ArmSacrificeBundle:Job')->getActiveJobs(
+                $category->getId(),
+                $this->container->getParameter('max_jobs_on_homepage')
+            ));
+        }
 
         return $this->render('job/index.html.twig', array(
-            'jobs' => $jobs,
+            'categories' => $categories
+//            'jobs' => $jobs
         ));
     }
 
@@ -54,11 +68,17 @@ class JobController extends Controller
     }
 
     /**
-     * Finds and displays a Job entity.
-     *
+     * Finds and displays a Job entity. (public function showAction(Job $job, $id))
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Job $job)
+    public function showAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $job = $em->getRepository('ArmSacrificeBundle:Job')->getActiveJob($id);
+        if (!$job) {
+            throw new HttpException('404', 'Record is not found');
+        }
         $deleteForm = $this->createDeleteForm($job);
 
         return $this->render('job/show.html.twig', array(

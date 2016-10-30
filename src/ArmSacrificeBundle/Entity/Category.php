@@ -27,6 +27,8 @@ class Category
      */
     private $affiliates;
 
+    private $activeJobs;
+
     /**
      * Constructor
      */
@@ -161,5 +163,14 @@ class Category
     {
         return $this->getName() ? $this->getName() : '';
     }
-}
 
+    public function setActiveJobs($jobs)
+    {
+        $this->activeJobs = $jobs;
+    }
+
+    public function getActiveJobs()
+    {
+        return $this->activeJobs;
+    }
+}
